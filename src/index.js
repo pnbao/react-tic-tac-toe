@@ -1,52 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-
-function Square(props) {
-  return (
-    <button
-      className={"square " + (props.isWinning ? "square--winning" : null)}
-      onClick={() => props.onClick()}
-    >
-      {props.value}
-    </button>
-  );
-}
-
-class Board extends React.Component {
-  renderSquare(i) {
-    return (
-      <Square
-        key={"sq" + i}
-        isWinning={this.props.winningSquares.includes(i)}
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
-      />
-    );
-  }
-
-  renderSquares(n) {
-    let squares = [];
-    for (let i = n; i < n + 3; i++) {
-      squares.push(this.renderSquare(i));
-    }
-    return squares;
-  }
-
-  renderRows(i) {
-    return <div className="board-row">{this.renderSquares(i)}</div>;
-  }
-
-  render() {
-    return (
-      <div>
-        {this.renderRows(0)}
-        {this.renderRows(3)}
-        {this.renderRows(6)}
-      </div>
-    );
-  }
-}
+import Board from './components/Board';
 
 class Game extends React.Component {
   constructor(props) {
@@ -118,8 +73,8 @@ class Game extends React.Component {
     });
     let status = "";
     const gameWinner = checkWin(current.squares);
-    if (gameWinner != null) {
-      status = "The winner is: " + gameWinner;
+    if (gameWinner) {
+      status = "The winner is: " + gameWinner.player;
     } else if (endgame(current.squares)) {
       status = "Game Over!";
     } else {
@@ -173,6 +128,7 @@ function endgame(squares) {
   }
   return true;
 }
+
 
 // ========================================
 

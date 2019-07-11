@@ -1,0 +1,75 @@
+/*----- X SVG CSS --- */
+.xsvg {
+    line-height: 100px;
+}
+.xsvg svg {
+	height:50px;
+	width:50px;
+}
+line {
+    stroke-width: 8px;
+}
+#path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 400;
+
+  animation: checker 1s linear;
+  animation-fill-mode:forwards;
+}
+
+@keyframes checker {
+  from {
+    stroke-dashoffset: 320;
+  }
+  to {
+    stroke-dashoffset: 400;
+  }
+}
+
+
+#path2 {
+  stroke-dasharray: 430;
+  stroke-dashoffset: 800;
+  stroke:red;
+  animation: x 150ms linear ;
+  animation-fill-mode:forwards;
+}
+
+#path3 {
+  stroke-dasharray: 430;
+  stroke-dashoffset: 800;
+  stroke: blue;
+  animation: x 150ms linear ;
+  animation-fill-mode:forwards;
+  animation-delay:150ms;
+}
+
+@keyframes x {
+  from {
+     stroke-dasharray: 430;
+  }
+  to {
+     stroke-dasharray: 400;
+  }
+}
+
+
+/*----- O SVG -----*/
+.osvg svg {
+    transform: rotate(-90deg);
+  }
+
+.osvg .path {
+    stroke-dasharray: 803.185;
+    stroke-dashoffset: 803.185;
+    stroke: #2ba912;
+    animation: dash 4.5s linear forwards;
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 100;
+    }
+  }
+
+
